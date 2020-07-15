@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-keycloak-example",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "*",
+    "express-session": "*",
+    "hogan-express": "*",
+    "jwk-to-pem": "^2.0.4",
+    "keycloak-connect": "*",
+    "axios": "*",
+    "qs": "*",
+    "body-parser": "*"
+  }
+}

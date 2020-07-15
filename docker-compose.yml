@@ -1,0 +1,63 @@
+version: '3'
+
+volumes:
+  postgres_data:
+      driver: local
+services:
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak_user
+        POSTGRES_PASSWORD: 7xlfDFkLP234324
+      networks:
+        net:
+          ipv4_address: 172.28.1.4
+  keycloak:
+      image: quay.io/keycloak/keycloak:latest
+      volumes:
+        - ./node/nodejs-example-realm.json:/tmp/example-realm.json
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak_user
+        DB_SCHEMA: public
+        DB_PASSWORD: 7xlfDFkLP234324
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: zoTeS58932h2394h23
+        KEYCLOAK_IMPORT: /tmp/example-realm.json
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+      networks: 
+        net:
+          ipv4_address: 172.28.1.5
+  node_middleware:
+      image: node_middleware
+      build: ./
+      command: "npm start"
+      stdin_open: true
+      tty: true
+      restart:
+        on-failure
+      ports:
+        - "3000:3000"
+      depends_on:
+        - postgres
+        - keycloak
+      networks:
+        net:
+          ipv4_address: 172.28.1.6
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+
+
+
