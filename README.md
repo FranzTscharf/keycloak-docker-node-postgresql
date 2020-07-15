@@ -10,6 +10,12 @@ docker-compose up --build
 docker-compose down
 ```
 
+## User interface:
+
+![KeyCloak Login](./media/1.png)
+![Node app with keycloak api key](./media/2.png)
+![postman login request to get api key from keycloak](./media/3.png)
+
 ## node API endpoint:
 
 host: http://localhost:3000/login
