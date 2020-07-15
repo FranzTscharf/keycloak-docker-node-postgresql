@@ -30,5 +30,6 @@ pass: zoTeS58932h2394h23
 
 ## PostgreSQL Instance:
 
-POSTGRES_USER: keycloak
+POSTGRES_USER: keycloak_user
+
 POSTGRES_PASSWORD: 7xlfDFkLP234324
