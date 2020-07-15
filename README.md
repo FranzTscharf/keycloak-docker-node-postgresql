@@ -1,13 +1,13 @@
 # Gateway
 
 ## Getting started:
-execute:
 ```
 cd gateway
 
 docker-compose up --build
-#to stop the conatiner agin
-docker-compose down
+
+# To stop the conatiner again execute:
+# docker-compose down
 ```
 
 ## User interface:
